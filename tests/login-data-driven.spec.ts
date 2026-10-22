@@ -3,13 +3,13 @@ import { test, expect } from '../fixtures/auth.fixture';
 const cenarios = [
   {
     descricao: 'Cliente válido',
-    email: 'cliente.valido@lojaqa.com',
-    senha: 'SenhaSegura123',
+    email: 'user@system.com',
+    senha: 'UserPassword123',
     sucesso: true,
   },
   {
-    descricao: 'Email inválido',
-    email: 'email-errado',
+    descricao: 'Email não cadastrado',
+    email: 'nao-cadastrado@lojaqa.com',
     senha: '123456789',
     sucesso: false,
   },

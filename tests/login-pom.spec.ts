@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto';
 import { test, expect } from '../fixtures/auth.fixture';
 
 test.describe('Ato 1: Validar carregamento e visibilidade de elementos', () => {
@@ -42,16 +43,18 @@ test.describe('Ato 3: Caminho triste e cadastros', () => {
   });
 
   test('criar usuario de cliente e validar o formulario de cadastro e o login', async ({ page, loginPage }) => {
+    const email = `cliente-${randomUUID()}@gmail.com`;
     await loginPage.goto();
-    await loginPage.cadastrarCliente('Cliente Teste', 'cliieenteteste@gmail.com', '123456789');
-    await loginPage.login('cliieenteteste@gmail.com', '123456789');
+    await loginPage.cadastrarCliente('Cliente Teste', email, '123456789');
+    await loginPage.login(email, '123456789');
     await expect(page).toHaveURL(/painel\.html/);
   });
 
   test('criar usuario de lojista e validar o formulario de cadastro e o login', async ({ page, loginPage }) => {
+    const email = `lojista-${randomUUID()}@gmail.com`;
     await loginPage.goto();
-    await loginPage.cadastrarLojista('Lojista Teste', 'lojiistaateste@gmail.com', '123456789', 'Loja Teste');
-    await loginPage.login('lojiistaateste@gmail.com', '123456789');
+    await loginPage.cadastrarLojista('Lojista Teste', email, '123456789', 'Loja Teste');
+    await loginPage.login(email, '123456789');
     await expect(page).toHaveURL(/painel\.html/);
   });
 });
