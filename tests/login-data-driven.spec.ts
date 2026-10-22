@@ -14,7 +14,7 @@ const cenarios = [
     sucesso: false,
   },
 ];
-//t
+
 test.describe('LojaQA - Testes Data-Driven', () => {
   for (const cenario of cenarios) {
     test(`Cenário: ${cenario.descricao}`, async ({ page, loginPage }) => {
